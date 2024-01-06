@@ -19,8 +19,9 @@ pip3 install sphinx-autobuild
 pip3 install sphinx_rtd_theme
 pip3 install recommonmark
 pip3 install sphinx_markdown_tables
+pip3 install sphinx_copybutton
 ```
-## How to use Sphinx?
+## 本地编译 Sphinx 项目
 ### 使用 sphinx-quickstart
 ```shell
 mkdir Atticus_Notes
@@ -46,8 +47,9 @@ html_theme = 'sphinx_rtd_theme'
 打开 source/conf.py 文件，修改如下
 ```python
 extensions = [
-    'recommonmark',
-    'sphinx_markdown_tables'
+   'recommonmark',
+   'sphinx_markdown_tables',
+   'sphinx_copybutton'
 ]
 ```
 ### 创建内容
@@ -90,13 +92,50 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 ```
-# Upload Sphinx Project to Github
+# 使用 Read the Docs 远程编译/托管 Sphinx 项目
+## 添加新文件
+如果要使用 Read the Docs 远程编译/托管 Sphinx 项目，则需要在项目根目录中添加三个文件，分别是 .readthedocs.yaml， requirements.txt，和 .gitignore。
+### 添加 requirements.txt 文件
+添加 requirements.txt 的目的是为了在 Read the Docs 服务器上安装与本地相同的 python 插件。  
+requirements.txt 内容如下所示：
+```
+recommonmark==0.7.1
+sphinx-autobuild==2021.3.14
+sphinx-markdown-tables==0.0.17
+sphinx-rtd-theme==2.0.0
+sphinx-copybutton==0.5.2
+```
+### 添加 .readthedocs.yaml 文件
+官方文档 <https://docs.readthedocs.io/en/stable/config-file/>  
+.readthedocs.yaml 内容如下所示：
+```
+version: 2
+
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.11"
+
+sphinx:
+  configuration: source/conf.py
+  dirhtml builder for simpler URLs
+
+python:
+  install:
+  - requirements: requirements.txt
+```
+### 添加 .gitignore 文件
+因为 Read the Docs 会重新编译文件，所以不需要 build 文件夹中的内容，.gitignore 内容如下：
+```
+build/
+```
+
 ## 建立本地仓库
 ```shell
-cd ~/Atticus_Notes
+cd ~/Atticus_Notes # 进入本地 Sphinx 项目工作目录
 git init 
-git add .
-git commit -m "initial commit"
+git add . # 添加到缓存区
+git commit -m "initial commit" # 提交到本地仓库
 ```
 ## 设置 SSH 秘钥
 详见 GitHub 章节

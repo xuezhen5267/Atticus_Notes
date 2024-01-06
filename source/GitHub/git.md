@@ -48,6 +48,11 @@ git commit -m “message”     # 将暂存区文件提交到本地仓库
 git checkout HEAD filename  # 用仓库中的 filename 文件覆盖工作区中的 filename 文件
 ```
 ## 配置 .gitignore 文件
+.gitignore 文件只能忽略那些没有被 track 的文件，如果这些文件已经被纳入到版本管理中，则修改 .gitingore 是无效的。 解决方案是吧本地缓存删除，然后再提交。
+```shell
+git rm -r --cached .
+``` 
+
 无任特殊符号，既表示文件也表示文件夹
 ```shell 
 folder              # 与 “folder” 同名的文件和文件夹都会被忽略

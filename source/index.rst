@@ -12,6 +12,7 @@ Welcome to Atticus Notes's documentation!
 
    Linux/index.rst
    GitHub/index.rst
+   Docker/index.rst
    Apollo/index.rst
 
 Indices and tables

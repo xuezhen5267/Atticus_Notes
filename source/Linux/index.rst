@@ -8,4 +8,5 @@ Linux
    regular.md
    sphinx.md
    vpn.md
+   CUDA.md
    

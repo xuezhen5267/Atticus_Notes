@@ -6,3 +6,4 @@ GitHub & Git
    :caption: Conents:
    
    git.md
+   github.md
