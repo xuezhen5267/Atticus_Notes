@@ -143,7 +143,7 @@ sphinx:
 # See https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html
 python:
   install:
-    - requirements: docs/requirements.txt
+    - requirements: requirements.txt
 ```
 ### 添加 .gitignore 文件
 因为 Read the Docs 会重新编译文件，所以不需要 build 文件夹中的内容，.gitignore 内容如下：
