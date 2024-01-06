@@ -108,7 +108,7 @@ bash docker/scripts/dev_into.sh
 nvcc fatal   : Unsupported gpu architecture 'compute_89'    
 报错的原因是容器内安装的 CUDA 版本较低，在容器中输入以下命令检查,发现 CUDA 版本为11.1，支持的 compute capability 最高为 86, 而 40 系列显卡的 compute capability 为 89 详见 <https://developer.nvidia.com/cuda-gpus>。
 ```shell
-$ nvcc --list-gpuarch
+$ nvcc --list-gpu-arch
 compute_35
 compute_37
 compute_50
@@ -138,4 +138,5 @@ Build cuda_11.1.TC455_06.29190527_0
     首先，前两种安装方式可能会出现未配置公钥导致无法设置apt下载源的问题，具体解决方法可参考这篇博客。  
     其次，在安装过程中若目标CUDA toolkit对应的显卡驱动版本与机器上原本的显卡驱动版本并不完全匹配，则会提示依赖关系错误，无法安装。  
     最后，有一些博客会给出使用aptitude进行安装的解决方法，但是该方法会默认卸载机器上原有的显卡驱动，安装目标CUDA toolkit对应的显卡驱动，在这个过程中会出现错误。  
-    综上所述，我们选择使用runfile方式进行安装。使用runfile方式安装并不是上述版本不完全对应的问题就被直接解决了，而是它给我们提供了手动选择只安装CUDA toolkit，而不安装驱动的选择:
+    综上所述，我们选择使用runfile方式进行安装。使用runfile方式安装并不是上述版本不完全对应的问题就被直接解决了，而是它给我们提供了手动选择只安装CUDA toolkit，而不安装驱动的选择。
+2. 在容器内运行一下

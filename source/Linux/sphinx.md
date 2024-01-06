@@ -90,5 +90,30 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 ```
-## Upload Sphinx to Github
-TBD
+# Upload Sphinx Project to Github
+## 建立本地仓库
+```shell
+cd ~/Atticus_Notes
+git init 
+git add .
+git commit -m "initial commit"
+```
+## 设置 SSH 秘钥
+详见 GitHub 章节
+
+## GitHub 仓库
+设置 GitHub 仓库
+```shell
+cd ~/Atticus_Notes # 这里的 Atticus_Notes 是当前工作目录，该目录下有 .git 隐藏文件
+git remote add Atticus_Notes git@github.com:xuezhen5267/Atticus_Notes.git # 添加一个新的远程仓库，名称为 Atticus_Notes, 地址为 git@github.com:xuezhen5267/Atticus_Notes.git ，使用 https 地址也可以。
+```
+使用 Git 将本地仓库推送到 GitHub 上
+```shell
+git push -u Atticus_Notes master
+```
+# 将 Sphinx 项目 托管到 Read the docs 网站
+参考 <https://zhuanlan.zhihu.com/p/618886468>
+官网 <https://readthedocs.org/dashboard/> 注册病登录
+
+Import a Project -> xuezhen5267/Atticus_Notes -> default branch -> master -> Next -> Finish
+
