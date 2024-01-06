@@ -2,7 +2,7 @@
 ## GitHub Create a New Repository
 New Repository ->repository name -> public -> add a README file -> Create repository
 
-## SSH
+## 配置 SSH
 可以使用 SSH（安全外壳协议）访问和写入 GitHub.com 上的存储库中的数据。 通过 SSH 进行连接时，使用本地计算机上的私钥文件进行身份验证。   
 使用 SSH 链接，需要依次执行以下几个步骤：
 ### Step 0：检查本地 PC 上是否有 SSH 秘钥
@@ -57,8 +57,8 @@ ssh-add ~/.ssh/id_ed25519  # 以实际生成的秘钥名称为准
 $ ssh -T git@github.com
 Hi xuezhen5267! You've successfully authenticated, but GitHub does not provide shell access.
 ```
-# 使用 Git 操作 GitHub 仓库
-## 在 Git 上设置 GitHub 仓库
+## 使用 Git 操作 GitHub 仓库
+### 在 Git 上设置 GitHub 仓库
 ```shell
 cd ~/Atticus_Notes # 这里的 Atticus_Notes 是当前工作目录，该目录下有 .git 隐藏文件
 git remote add Atticus_Notes git@github.com:xuezhen5267/Atticus_Notes.git # 添加一个新的远程仓库，名称为 Atticus_Notes, 地址为 git@github.com:xuezhen5267/Atticus_Notes.git ，使用 https 地址也可以。

@@ -92,10 +92,10 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 ```
-# 使用 Read the Docs 远程编译/托管 Sphinx 项目
-## 添加新文件
+## 使用 Read the Docs 远程编译/托管 Sphinx 项目
+### 添加新文件
 如果要使用 Read the Docs 远程编译/托管 Sphinx 项目，则需要在项目根目录中添加三个文件，分别是 .readthedocs.yaml， requirements.txt，和 .gitignore。
-### 添加 requirements.txt 文件
+#### 添加 requirements.txt 文件
 添加 requirements.txt 的目的是为了在 Read the Docs 服务器上安装与本地相同的 python 插件。  
 requirements.txt 内容如下所示：
 ```
@@ -105,7 +105,7 @@ sphinx-markdown-tables==0.0.17
 sphinx-rtd-theme==2.0.0
 sphinx-copybutton==0.5.2
 ```
-### 添加 .readthedocs.yaml 文件
+#### 添加 .readthedocs.yaml 文件
 官方文档 <https://docs.readthedocs.io/en/stable/config-file/>  
 .readthedocs.yaml 内容如下所示：
 ```
@@ -145,23 +145,23 @@ python:
   install:
     - requirements: requirements.txt
 ```
-### 添加 .gitignore 文件
+#### 添加 .gitignore 文件
 因为 Read the Docs 会重新编译文件，所以不需要 build 文件夹中的内容，.gitignore 内容如下：
 ```
 build/
 ```
 
-## 建立本地仓库
+### 建立本地仓库
 ```shell
 cd ~/Atticus_Notes # 进入本地 Sphinx 项目工作目录
 git init 
 git add . # 添加到缓存区
 git commit -m "initial commit" # 提交到本地仓库
 ```
-## 设置 SSH 秘钥
+### 设置 SSH 秘钥
 详见 GitHub 章节
 
-## GitHub 仓库
+### GitHub 仓库
 设置 GitHub 仓库
 ```shell
 cd ~/Atticus_Notes # 这里的 Atticus_Notes 是当前工作目录，该目录下有 .git 隐藏文件
@@ -171,7 +171,7 @@ git remote add Atticus_Notes git@github.com:xuezhen5267/Atticus_Notes.git # 添�
 ```shell
 git push -u Atticus_Notes master
 ```
-# 将 Sphinx 项目 托管到 Read the docs 网站
+### 将 Sphinx 项目 托管到 Read the docs 网站
 参考 <https://zhuanlan.zhihu.com/p/618886468>
 官网 <https://readthedocs.org/dashboard/> 注册病登录
 

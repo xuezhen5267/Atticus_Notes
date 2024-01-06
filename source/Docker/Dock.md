@@ -39,5 +39,11 @@ newgrp docker # 更新用户组
 ## Docker 基本操作
 查看 docker 当前容器
 ```shell
-docker ps -a
+docker ps -a ## -a 表示 all，会列出所有容器，包括没有在运行的容器
 ```
+删除 docker 容器
+```shell
+sudo docker rm container_name # container_id 也可以
+sudo docker rm `sudo docker ps -a -q` # 删除所有容器 -q 表示只需要返回容器的id
+```
+
