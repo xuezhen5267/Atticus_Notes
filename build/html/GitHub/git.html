@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to install Git &mdash; Atticus_Notes v1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Apollo" href="../Apollo/index.html" />
+    <link rel="prev" title="GitHub &amp; Git" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Atticus_Notes
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">GitHub &amp; Git</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to install Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git">Git 理论</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Git 的四个区域：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Git 中文件的四种状态</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-git">How to use Git</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">配置 Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">创建仓库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Git 基本操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gitignore">配置 .gitignore 文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">正规开源项目的 Git 使用方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Git 其他问题</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Git 克隆项目太大，克隆超时</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Apollo/index.html">Apollo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Atticus_Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">GitHub &amp; Git</a></li>
+      <li class="breadcrumb-item active">How to install Git</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/GitHub/git.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-install-git">
+<h1>How to install Git<a class="headerlink" href="#how-to-install-git" title="Permalink to this heading"></a></h1>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
+</pre></div>
+</div>
+</section>
+<section id="git">
+<h1>Git 理论<a class="headerlink" href="#git" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>Git 的四个区域：<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>工作区（workspace）：存放代码的文件夹。</p>
+<p>暂存区（index/stage）：工作区中隐藏文件夹 .git 中的的一个文件，不重要。</p>
+<p>本地仓库（local repository）： 用于存放历史版本数据，不重要。</p>
+<p>远程仓库（eg. GitHub）： 用于托管代码的服务器。</p>
+</section>
+<section id="id2">
+<h2>Git 中文件的四种状态<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>查看仓库中的文件状态</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<p>untracked：未跟踪，不参与版本控制。通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> 可以将文件状态改为 staged状态。</p>
+<p>unmodified：文件入库暂且未被修改。使用<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span></code>可以将文件还原为 untracked。</p>
+<p>modified：文件被入库暂存区且<strong>被</strong>修改。使用 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>可以跟踪当前修改，将当前状态变为 staged；使用<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code>可以回溯到之前跟踪的状态（覆盖当前状态）。</p>
+<p>staged：暂存状态。使用<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>将该文件入库，入库后文件状态变为 unmodified 状态；使用<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">HEAD</span> <span class="pre">filename</span></code> 取消暂存，文件状态变为 Modified状态。</p>
+</section>
+</section>
+<section id="how-to-use-git">
+<h1>How to use Git<a class="headerlink" href="#how-to-use-git" title="Permalink to this heading"></a></h1>
+<section id="id3">
+<h2>配置 Git<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>在使用 Git 前，需要配置 Git 的用户名和邮箱</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Atticus&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span>xuezhen5267@163.com
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>创建仓库<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init<span class="w">                    </span><span class="c1"># 把当前目录当做仓库项目根目录</span>
+git<span class="w"> </span>clone<span class="w"> </span>xxx<span class="w">               </span><span class="c1"># 在当前目录中创建一个文件夹，该文件夹（而非当前目录）为仓库根目录</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>Git 基本操作<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>正向操作</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w">                   </span><span class="c1"># 将工作区内所有文件添加到暂存区</span>
+git<span class="w"> </span>add<span class="w"> </span>filename<span class="w">            </span><span class="c1"># 将工作区内的 filename 文件添加到暂存区</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span>“message”<span class="w">     </span><span class="c1"># 将暂存区文件提交到本地仓库 </span>
+</pre></div>
+</div>
+<p>恢复文件</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>HEAD<span class="w"> </span>filename<span class="w">  </span><span class="c1"># 用仓库中的 filename 文件覆盖工作区中的 filename 文件</span>
+</pre></div>
+</div>
+</section>
+<section id="gitignore">
+<h2>配置 .gitignore 文件<a class="headerlink" href="#gitignore" title="Permalink to this heading"></a></h2>
+<p>无任特殊符号，既表示文件也表示文件夹</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>folder<span class="w">              </span><span class="c1"># 与 “folder” 同名的文件和文件夹都会被忽略</span>
+</pre></div>
+</div>
+<p>/ 放在字符串后，表示该字符串仅表示文件夹名称</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>folder/<span class="w">             </span><span class="c1"># 只有与 “folder” 同名的文件夹都会被忽略</span>
+</pre></div>
+</div>
+<p>！ 放在字符串前，表示取反，不忽略，在忽略的前提下除外</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>folder<span class="w">              </span><span class="c1"># 先忽略与 “folder” 同名的文件和文件夹</span>
+!folder/<span class="w">            </span><span class="c1"># 再明确与 “folder” 同名的文件夹除外，只忽略文件</span>
+</pre></div>
+</div>
+<p>* 表示统配字符</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>doc/*.txt<span class="w">           </span><span class="c1"># 忽略的文件需要满足两个条件：</span>
+<span class="w">                    </span><span class="c1"># 第一，在doc文件夹下一级</span>
+<span class="w">                    </span><span class="c1"># 第二，文件类型为 .txt</span>
+<span class="w">                    </span><span class="c1"># 所以，doc/abc.txt 会被忽略，doc/xyz/abc.txt 不会被忽略</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>正规开源项目的 Git 使用方法<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p>参考 <a class="reference external" href="https://www.bilibili.com/video/BV19e4y1q7JJ/?spm_id_from=333.337.search-card.all.click&amp;vd_source=45a2f0bac62c02182ba7aa5ba31b556e">https://www.bilibili.com/video/BV19e4y1q7JJ/?spm_id_from=333.337.search-card.all.click&amp;vd_source=45a2f0bac62c02182ba7aa5ba31b556e</a></p>
+<p>在某个 tag 的基础上创建新的 branch, tag 名称可以区 GitHub 上查看</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>branch_name<span class="w"> </span>tag_name
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>Git 其他问题<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<section id="id8">
+<h3>Git 克隆项目太大，克隆超时<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<p>参考 <a class="reference external" href="https://blog.csdn.net/wsmrzx/article/details/115793236">https://blog.csdn.net/wsmrzx/article/details/115793236</a></p>
+<p>报错如下：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>fetch-pack:<span class="w"> </span>unexpected<span class="w"> </span>disconnect<span class="w"> </span><span class="k">while</span><span class="w"> </span>reading<span class="w"> </span>sideband<span class="w"> </span>packet
+</pre></div>
+</div>
+<p>方案1 增加 http 缓存</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.postBuffer<span class="w"> </span><span class="m">1048576000</span><span class="w"> </span><span class="c1"># post Buffer 单位是 Byte， 1048576000 为1G</span>
+</pre></div>
+</div>
+<p>方案2 放宽 http 网络传输限制</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.lowSpeedLimit<span class="w"> </span><span class="m">0</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.lowSpeedTime<span class="w"> </span><span class="m">999999</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="GitHub &amp; Git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../Apollo/index.html" class="btn btn-neutral float-right" title="Apollo" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, Atticus.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to install Apollo &mdash; Atticus_Notes v1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="Apollo" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Atticus_Notes
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GitHub/index.html">GitHub &amp; Git</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Apollo</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to install Apollo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker">安装 Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvidia-driver-support">Nvidia Driver Support</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nvidia-gpu-driver">安装 Nvidia GPU Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nvidia-container-toolkit">安装 Nvidia container toolkit</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#apollo">克隆 Apollo 源码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">启动 Apollo 环境容器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">进入 Apollo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">编译</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Atticus_Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Apollo</a></li>
+      <li class="breadcrumb-item active">How to install Apollo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Apollo/apollo_installation.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-install-apollo">
+<h1>How to install Apollo<a class="headerlink" href="#how-to-install-apollo" title="Permalink to this heading"></a></h1>
+<p>官方安装文档 <a class="reference external" href="https://apollo.baidu.com/docs/apollo/9.0/md_docs_2_xE5_xAE_x89_xE8_xA3_x85_xE6_x8C_x87_xE5_x8D_x97_2_xE6_xBA_x90_xE7_xA0_x81_xE5_xAE_x89_c6622abe953930b2197ae66df0a51dcd.html">https://apollo.baidu.com/docs/apollo/9.0/md_docs_2_xE5_xAE_x89_xE8_xA3_x85_xE6_x8C_x87_xE5_x8D_x97_2_xE6_xBA_x90_xE7_xA0_x81_xE5_xAE_x89_c6622abe953930b2197ae66df0a51dcd.html</a></p>
+<p>安装环境：<br />ubuntu 22.04<br />NVIDIA RTX 4070</p>
+<section id="docker">
+<h2>安装 Docker<a class="headerlink" href="#docker" title="Permalink to this heading"></a></h2>
+<p>官方文档 <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></p>
+<p>Set docker’s apt repository</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add Docker&#39;s official GPG key:</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ca-certificates<span class="w"> </span>curl<span class="w"> </span>gnupg
+sudo<span class="w"> </span>install<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>-d<span class="w"> </span>/etc/apt/keyrings
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/docker.gpg
+sudo<span class="w"> </span>chmod<span class="w"> </span>a+r<span class="w"> </span>/etc/apt/keyrings/docker.gpg
+
+<span class="c1"># Add the repository to Apt sources:</span>
+<span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \</span>
+<span class="s2">  </span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VERSION_CODENAME</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2"> stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</pre></div>
+</div>
+<p>Install docker</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
+</pre></div>
+</div>
+<p>Verify that docker has been installed</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+</pre></div>
+</div>
+</section>
+<section id="nvidia-driver-support">
+<h2>Nvidia Driver Support<a class="headerlink" href="#nvidia-driver-support" title="Permalink to this heading"></a></h2>
+<section id="nvidia-gpu-driver">
+<h3>安装 Nvidia GPU Driver<a class="headerlink" href="#nvidia-gpu-driver" title="Permalink to this heading"></a></h3>
+<p>官网下载安装包 <a class="reference external" href="https://www.nvidia.cn/Download/index.aspx">https://www.nvidia.cn/Download/index.aspx</a></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/Downloads
+sh<span class="w"> </span>NVIDIA-Linux-x86_64-535.146.02.run
+</pre></div>
+</div>
+</section>
+<section id="nvidia-container-toolkit">
+<h3>安装 Nvidia container toolkit<a class="headerlink" href="#nvidia-container-toolkit" title="Permalink to this heading"></a></h3>
+<p>安装 Nvidia container toolkit 是为了能够在 docker 容器获得 GPU 支持。
+安装 Nvidia container toolkit</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">distribution</span><span class="o">=</span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="p">;</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$ID$VERSION_ID</span><span class="k">)</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-L<span class="w"> </span>https://nvidia.github.io/nvidia-docker/gpgkey<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+curl<span class="w"> </span>-s<span class="w"> </span>-L<span class="w"> </span>https://nvidia.github.io/nvidia-docker/<span class="nv">$distribution</span>/nvidia-docker.list<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/nvidia-docker.list
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nvidia-docker2
+</pre></div>
+</div>
+<p>安装完毕后，手动重启 docker：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+</pre></div>
+</div>
+</section>
+</section>
+<section id="apollo">
+<h2>克隆 Apollo 源码<a class="headerlink" href="#apollo" title="Permalink to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ApolloAuto/apollo.git
+<span class="nb">cd</span><span class="w"> </span>apollo
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>Atticus0105<span class="w"> </span>v9.0.0<span class="w"> </span><span class="c1"># 在 v9.0.0 的 tag 基础上创建一个名为 Atticus0105 的分支</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h2>启动 Apollo 环境容器<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>将当前用户添加到 docker 用户组，以获得 root 权限。<br />如果不让 docker 获得 root 权限，有可能会有以下报错</p>
+<p>permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get “http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version”: dial unix /var/run/docker.sock: connect: permission denied</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>groupadd<span class="w"> </span>docker<span class="w"> </span><span class="c1"># 添加 docker 用户组，有可能系统已经有 docker 用户组了</span>
+sudo<span class="w"> </span>gpasswd<span class="w"> </span>-a<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>docker<span class="w"> </span><span class="c1"># 将登录用户添加到 docker 用户组中</span>
+newgrp<span class="w"> </span>docker<span class="w"> </span><span class="c1"># 更新用户组</span>
+</pre></div>
+</div>
+<p>在 apollo 目录下输入一下命令启动环境容器</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>docker/scripts/dev_start.sh
+</pre></div>
+</div>
+<p>操作成功后会显示以下输出, 告诉我们已经建好了一个名为 apollo_dev_xz 的容器</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">[</span><span class="w"> </span>OK<span class="w"> </span><span class="o">]</span><span class="w"> </span>Congratulations!<span class="w"> </span>You<span class="w"> </span>have<span class="w"> </span>successfully<span class="w"> </span>finished<span class="w"> </span>setting<span class="w"> </span>up<span class="w"> </span>Apollo<span class="w"> </span>Dev<span class="w"> </span>Environment.
+<span class="o">[</span><span class="w"> </span>OK<span class="w"> </span><span class="o">]</span><span class="w"> </span>To<span class="w"> </span>login<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>newly<span class="w"> </span>created<span class="w"> </span>apollo_dev_xz<span class="w"> </span>container,<span class="w"> </span>please<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>command:
+<span class="o">[</span><span class="w"> </span>OK<span class="w"> </span><span class="o">]</span><span class="w">   </span>bash<span class="w"> </span>docker/scripts/dev_into.sh
+<span class="o">[</span><span class="w"> </span>OK<span class="w"> </span><span class="o">]</span><span class="w"> </span>Enjoy!
+</pre></div>
+</div>
+<p>输入一下命令查看一下 docker 容器</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>ps<span class="w"> </span>-a
+</pre></div>
+</div>
+<p>显示存在一个名为 apollo_dev_xz 的容器就 OK，如下所示。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">                                              </span>COMMAND<span class="w">       </span>CREATED<span class="w">         </span>STATUS<span class="w">                   </span>PORTS<span class="w">     </span>NAMES
+34815cfe1dc3<span class="w">   </span>apolloauto/apollo:dev-x86_64-18.04-20230831_1143<span class="w">   </span><span class="s2">&quot;/bin/bash&quot;</span><span class="w">   </span><span class="m">5</span><span class="w"> </span>minutes<span class="w"> </span>ago<span class="w">   </span>Up<span class="w"> </span><span class="m">5</span><span class="w"> </span>minutes<span class="w">                       </span>apollo_dev_xz
+b318dde462e6<span class="w">   </span>hello-world<span class="w">                                        </span><span class="s2">&quot;/hello&quot;</span><span class="w">      </span><span class="m">2</span><span class="w"> </span>hours<span class="w"> </span>ago<span class="w">     </span>Exited<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>hours<span class="w"> </span>ago<span class="w">             </span>vigilant_saha
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>进入 Apollo<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>docker/scripts/dev_into.sh
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>编译<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>在容器内运行</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./apollo.sh<span class="w"> </span>build
+</pre></div>
+</div>
+<p>如果使用40系列的显卡，应该会报错<br />nvcc fatal   : Unsupported gpu architecture ‘compute_89’<br />报错的原因是容器内安装的 CUDA 版本较低，在容器中输入以下命令检查,发现 CUDA 版本为11.1，支持的 compute capability 最高为 86, 而 40 系列显卡的 compute capability 为 89 详见 <a class="reference external" href="https://developer.nvidia.com/cuda-gpus">https://developer.nvidia.com/cuda-gpus</a>。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nvcc<span class="w"> </span>--list-gpuarch
+compute_35
+compute_37
+compute_50
+compute_52
+compute_53
+compute_60
+compute_61
+compute_62
+compute_70
+compute_72
+compute_75
+compute_80
+compute_86
+
+$<span class="w"> </span>nvcc<span class="w"> </span>--version
+nvcc:<span class="w"> </span>NVIDIA<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>Cuda<span class="w"> </span>compiler<span class="w"> </span>driver
+Copyright<span class="w"> </span><span class="o">(</span>c<span class="o">)</span><span class="w"> </span><span class="m">2005</span>-2020<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation
+Built<span class="w"> </span>on<span class="w"> </span>Mon_Oct_12_20:09:46_PDT_2020
+Cuda<span class="w"> </span>compilation<span class="w"> </span>tools,<span class="w"> </span>release<span class="w"> </span><span class="m">11</span>.1,<span class="w"> </span>V11.1.105
+Build<span class="w"> </span>cuda_11.1.TC455_06.29190527_0
+</pre></div>
+</div>
+<p>解决方案如下：</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="Apollo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, Atticus.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
